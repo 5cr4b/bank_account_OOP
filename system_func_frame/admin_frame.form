@@ -131,11 +131,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="G&#x1eed;i tin nh&#x1eaf;n"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Sao k&#xea; t&#xe0;i kho&#x1ea3;n"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
@@ -146,11 +152,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Th&#x1b0; &#x111;&#xe3; g&#x1eed;i"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton5">
       <Properties>
         <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin t&#xe0;i kho&#x1ea3;n"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton6">
       <Properties>
@@ -187,8 +199,11 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="jCheckBox5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hack NASA b&#x1eb1;ng html"/>
+        <Property name="text" type="java.lang.String" value="Hack NASA b&#x1eb1;ng HTML"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox5ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

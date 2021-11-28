@@ -30,19 +30,24 @@ public class admin extends bank{
     
     
     // quyền hạn quản trị viên      
-    
+    public boolean admin_sign_in(String id , String password){
+        if(this.admin_id.equals(    id) && this.admin_password.equals(password)){
+            return true;
+        }
+        return false;
+    }
     
     
     
     
     // send message to some body
-    protected void send_message(account account, String message){
+    public void send_message(account account, String message){
         account.list_message.add(this.message_time(account.get_username(),message));
         this.list_message.add(this.message_time(account.get_username(),message));
     }  
     
         // check info & tranfer's history
-    protected void show_info_history(account account){
+    public void show_info_history(account account){
         System.out.println("name: " + account.get_username() + "\n"
                            + " bank number : "+ account.get_bank_id() + "\n"
                            + " password: "+account.get_bankPassword() + "\n"
@@ -54,7 +59,7 @@ public class admin extends bank{
     }  
     
        // print file tranfer's history
-    protected void sao_ke(account account){       
+    public void sao_ke(account account){       
         try {
             // tao file trong ubuntu
             FileWriter fWriter = new FileWriter("/home/cr4b/bank/saoke.txt");

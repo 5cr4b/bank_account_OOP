@@ -1,4 +1,4 @@
-package func_frame;
+package user_func_frame;
 
 import noti_frame.nap_tien_fail1;
 import noti_frame.nap_tien_success;

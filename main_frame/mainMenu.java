@@ -1,13 +1,13 @@
 package main_frame;
 import src.account;
-import func_frame.show_hop_thu;
-import func_frame.show_gd;
-import func_frame.show_nap_tien;
-import func_frame.show_chuyen_tien;
-import func_frame.show_children;
-import func_frame.show_rut_tien;
-import func_frame.show_thong_tin;
-import func_frame.show_vac_xin;
+import user_func_frame.show_hop_thu;
+import user_func_frame.show_gd;
+import user_func_frame.show_nap_tien;
+import user_func_frame.show_chuyen_tien;
+import user_func_frame.show_children;
+import user_func_frame.show_rut_tien;
+import user_func_frame.show_thong_tin;
+import user_func_frame.show_vac_xin;
 import src.bank;
 
 public class mainMenu extends javax.swing.JFrame {

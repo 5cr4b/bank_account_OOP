@@ -4,12 +4,16 @@ import src.account;
 import noti_frame.sign_in_fail;
 import noti_frame.sign_up_fail;
 import noti_frame.sign_up_success;
+import src.admin;
+import system_func_frame.admin_frame;
+import system_func_frame.admin_sign_in;
 
 public class sign_in_up extends javax.swing.JFrame {
     account peter010;
     account linda1;
     account tuan123;
-    bank bank_system;
+    bank bank_system;    
+    admin admin = new admin();
     
 
     public sign_in_up(bank bank_system , account linda1 , account peter010,account tuan123) {
@@ -212,7 +216,7 @@ public class sign_in_up extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("admin");
+        jButton4.setText("For admin");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -245,9 +249,9 @@ public class sign_in_up extends javax.swing.JFrame {
                         .addGap(42, 42, 42)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLayeredPane1)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addComponent(jInternalFrame1)
         );
         layout.setVerticalGroup(
@@ -333,9 +337,8 @@ public class sign_in_up extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        admin_frame admin1 = new admin_frame();
+        admin_sign_in admin1 = new admin_sign_in(admin,this.tuan123,this.linda1,this.peter010);
         admin1.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void soTK_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soTK_inputActionPerformed

@@ -1,4 +1,4 @@
-package func_frame;
+package user_func_frame;
 import noti_frame.rut_tien_fail;
 import noti_frame.rut_tien_success;
 import src.account;

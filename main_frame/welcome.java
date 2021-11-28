@@ -1,4 +1,5 @@
 package main_frame;
+import system_func_frame.admin_frame;
 import src.account;
 import src.bank;
 
@@ -6,8 +7,6 @@ public class welcome extends javax.swing.JFrame {
 
     // tạo ngân hàng
     bank bank_system = new bank();
-    
-    admin_frame admin = new admin_frame();
     
     // tạo những tài khoản ngân hàng có sãn
     account tuan123=new account();

@@ -1,16 +1,24 @@
-
-package func_frame;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package system_func_frame;
 
 import src.account;
 
-public class show_thong_tin extends javax.swing.JFrame {
+/**
+ *
+ * @author cr4b
+ */
+public class show_info_user extends javax.swing.JFrame {
 
-    public show_thong_tin() {
+    
+    public show_info_user() {
         initComponents();
     }
-    public show_thong_tin(account acc) {
-        initComponents();
 
+    public show_info_user(account acc) {
+        initComponents();
         info_bank_id.setText(acc.get_bank_id());
         info_password.setText(acc.get_bankPassword());
         info_name.setText(acc.get_username());
@@ -19,33 +27,26 @@ public class show_thong_tin extends javax.swing.JFrame {
         
     }
 
-   
+    show_info_user(account tuan123, account linda1, account peter010) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        info_bank_id = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        info_password = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         info_money = new javax.swing.JTextField();
         info_name = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        info_bank_id = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        info_password = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel5.setText("Họ tên");
-
-        jLabel3.setText("Mật khẩu");
-
-        info_password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                info_passwordActionPerformed(evt);
-            }
-        });
 
         jButton1.setText("OK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +66,16 @@ public class show_thong_tin extends javax.swing.JFrame {
         });
 
         jLabel6.setText("      Thông tin tài khoản");
+
+        jLabel5.setText("Họ tên");
+
+        jLabel3.setText("Mật khẩu");
+
+        info_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                info_passwordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,20 +133,19 @@ public class show_thong_tin extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void info_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_info_passwordActionPerformed
-        
-    }//GEN-LAST:event_info_passwordActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void info_moneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_info_moneyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_info_moneyActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void info_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_info_passwordActionPerformed
+
+    }//GEN-LAST:event_info_passwordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,23 +164,22 @@ public class show_thong_tin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(show_thong_tin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(show_info_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(show_thong_tin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(show_info_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(show_thong_tin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(show_info_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(show_thong_tin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(show_info_user.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new show_thong_tin().setVisible(true);
+                new show_info_user().setVisible(true);
             }
         });
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

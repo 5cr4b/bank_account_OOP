@@ -1,38 +1,43 @@
-package func_frame;
+package system_func_frame;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import src.account;
+import src.admin;
 
-public class show_hop_thu extends javax.swing.JFrame {
-    public account acc;
-    public ArrayList<String[]> list_message = new ArrayList<String[]>();
+
+public class list_mail extends javax.swing.JFrame {
+    ArrayList list_message;
+    admin admin;
     
-    // Creates new form nap_tien 
-    public show_hop_thu() {
+    public list_mail() {
         initComponents();
     }
-    public show_hop_thu(account acc) {
+    
+    public list_mail(admin admin) {
         initComponents();
-        this.list_message = acc.get_list_message();
+        this.admin = admin;
         String  s = "" ;
-        for(String[] a : this.list_message){
+        for(String[] a : admin.list_message){
             String b = Arrays.toString(a);
             s += b +"\n";
         }
         show.setText(s);
-        
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         show = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        show.setColumns(20);
+        show.setRows(5);
+        jScrollPane2.setViewportView(show);
 
         jLabel2.setText("         Hộp thư đến");
 
@@ -42,10 +47,6 @@ public class show_hop_thu extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-
-        show.setColumns(20);
-        show.setRows(5);
-        jScrollPane2.setViewportView(show);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,7 +77,6 @@ public class show_hop_thu extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -100,20 +100,20 @@ public class show_hop_thu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(show_hop_thu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(list_mail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(show_hop_thu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(list_mail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(show_hop_thu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(list_mail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(show_hop_thu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(list_mail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new show_hop_thu().setVisible(true);
+                new list_mail().setVisible(true);
             }
         });
     }
@@ -124,4 +124,5 @@ public class show_hop_thu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea show;
     // End of variables declaration//GEN-END:variables
+
 }
