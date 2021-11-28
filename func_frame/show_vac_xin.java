@@ -7,6 +7,7 @@ package func_frame;
 import noti_frame.chuyen_tien_fail;
 import noti_frame.rut_tien_fail;
 import noti_frame.rut_tien_success;
+import noti_frame.ung_ho_success;
 import src.account;
 
 /**
@@ -36,7 +37,7 @@ public class show_vac_xin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         money_input = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        password_input = new javax.swing.JTextField();
+        password_input = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,9 +77,9 @@ public class show_vac_xin extends javax.swing.JFrame {
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel3))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(money_input, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(password_input, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(money_input, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                                .addComponent(password_input))
                             .addGap(13, 13, 13)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
@@ -118,8 +119,8 @@ public class show_vac_xin extends javax.swing.JFrame {
         int nap_tien1 = Integer.parseInt(money);
         String password = password_input.getText();
         if(this.acc.rut_tien(nap_tien1,password)){
-            rut_tien_success  rut_tien_success = new rut_tien_success();
-            rut_tien_success.setVisible(true);  
+            ung_ho_success  ung_ho_success = new ung_ho_success();
+            ung_ho_success.setVisible(true);  
         }
         else{
             chuyen_tien_fail tien_fail = new chuyen_tien_fail();
@@ -169,6 +170,6 @@ public class show_vac_xin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField money_input;
-    private javax.swing.JTextField password_input;
+    private javax.swing.JPasswordField password_input;
     // End of variables declaration//GEN-END:variables
 }

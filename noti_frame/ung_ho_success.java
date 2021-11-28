@@ -8,12 +8,12 @@ package noti_frame;
  *
  * @author cr4b
  */
-public class ung_ho_thanh_cong extends javax.swing.JFrame {
+public class ung_ho_success extends javax.swing.JFrame {
 
     /**
      * Creates new form sign_in_fail
      */
-    public ung_ho_thanh_cong() {
+    public ung_ho_success() {
         initComponents();
     }
 
@@ -86,14 +86,22 @@ public class ung_ho_thanh_cong extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ung_ho_thanh_cong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ung_ho_success.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ung_ho_thanh_cong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ung_ho_success.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ung_ho_thanh_cong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ung_ho_success.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ung_ho_thanh_cong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ung_ho_success.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -106,7 +114,7 @@ public class ung_ho_thanh_cong extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ung_ho_thanh_cong().setVisible(true);
+                new ung_ho_success().setVisible(true);
             }
         });
     }

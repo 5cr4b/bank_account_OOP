@@ -2,24 +2,28 @@ package func_frame;
 import noti_frame.chuyen_tien_fail;
 import noti_frame.chuyen_tien_success;
 import src.account;
+import src.bank;
 
 public class show_chuyen_tien extends javax.swing.JFrame {
-    public String bank_id ;
-    public String bank_password;
-    public String user_name;
-    public String bank_name;
-    public int user_money;
-    account acc_send;
-    account acc_receive;
-    
+    public account tuan123;
+    public account linda1;
+    public account peter010;
+    public account acc;
+    public bank bank;
     
     public show_chuyen_tien() {
         initComponents();
     }
-    public show_chuyen_tien(account acc_send , account acc_receive) {
-        this.acc_send = acc_send;
-        this.acc_receive = acc_receive;
+    
+    public show_chuyen_tien(account acc,bank bank_system,account tuan123,account linda1 ,account peter010) {
+        initComponents();
+        this.acc  = acc;
+        this.bank  = bank_system;
+        this.tuan123 = tuan123;
+        this.linda1 = linda1;
+        this.peter010 = peter010;
     }
+
 
  
     @SuppressWarnings("unchecked")
@@ -34,7 +38,7 @@ public class show_chuyen_tien extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         money_input = new javax.swing.JTextField();
-        password_input = new javax.swing.JTextField();
+        password_input = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,14 +79,15 @@ public class show_chuyen_tien extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(password_input, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(id_input, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                                .addComponent(money_input, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(password_input, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(id_input, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                                    .addComponent(money_input))
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1)))))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -97,11 +102,11 @@ public class show_chuyen_tien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(money_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(password_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(password_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -117,15 +122,45 @@ public class show_chuyen_tien extends javax.swing.JFrame {
         String password = password_input.getText();
         String money = money_input.getText();
         int nap_tien1 = Integer.parseInt(money);
-
-        if(this.acc_send.chuyen_tien(this.acc_receive, id , password ,nap_tien1)){
-            chuyen_tien_success success = new chuyen_tien_success();
-            success.setVisible(true);
-        }
-        else{
-            chuyen_tien_fail fail = new chuyen_tien_fail();
-            fail.setVisible(true);
-        }
+        // vua nhan && vua chuyen ??
+        
+        switch (id){
+            case "peter010":
+                if(this.acc.chuyen_tien(this.peter010, id , password ,nap_tien1)){
+                    chuyen_tien_success success = new chuyen_tien_success();
+                    success.setVisible(true);
+                }
+                else{
+                    chuyen_tien_fail fail = new chuyen_tien_fail();
+                    fail.setVisible(true);
+                }
+                break;
+               
+            case "linda1":
+                if(this.acc.chuyen_tien(this.linda1, id , password ,nap_tien1)){
+                    chuyen_tien_success success = new chuyen_tien_success();
+                    success.setVisible(true);
+                }
+                else{
+                    chuyen_tien_fail fail = new chuyen_tien_fail();
+                    fail.setVisible(true);
+                }
+                break;
+            case "tuan123":
+                if(this.acc.chuyen_tien(this.tuan123, id , password ,nap_tien1)){
+                    chuyen_tien_success success = new chuyen_tien_success();
+                    success.setVisible(true);
+                }
+                else{
+                    chuyen_tien_fail fail = new chuyen_tien_fail();
+                    fail.setVisible(true);
+                }
+                break;
+            default: 
+                chuyen_tien_fail fail = new chuyen_tien_fail();
+                fail.setVisible(true); 
+            break;
+        }        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -177,6 +212,6 @@ public class show_chuyen_tien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField money_input;
-    private javax.swing.JTextField password_input;
+    private javax.swing.JPasswordField password_input;
     // End of variables declaration//GEN-END:variables
 }

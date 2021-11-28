@@ -46,7 +46,6 @@ public class admin extends bank{
         System.out.println("name: " + account.get_username() + "\n"
                            + " bank number : "+ account.get_bank_id() + "\n"
                            + " password: "+account.get_bankPassword() + "\n"
-                           + " bank name: "+account.get_bank_name() + "\n"
                            + " current money: "+account.get_user_money());
         System.out.println(" lich su giao dich: ");
         for(String i[] : account.list_history) {

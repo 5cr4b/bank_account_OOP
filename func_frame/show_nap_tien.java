@@ -6,11 +6,6 @@ import src.account;
 
 public class show_nap_tien extends javax.swing.JFrame {
     public account acc;
-    public String bank_id ;
-    public String bank_password;
-    public String user_name;
-    public String bank_name;
-    public int user_money;
     
     // Creates new form nap_tien 
     
@@ -33,7 +28,7 @@ public class show_nap_tien extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        password_input = new javax.swing.JTextField();
+        password_input = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,9 +86,9 @@ public class show_nap_tien extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nap_tien_input))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(password_input))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(password_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -169,7 +164,7 @@ public class show_nap_tien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton nap_button;
     private javax.swing.JTextField nap_tien_input;
-    private javax.swing.JTextField password_input;
+    private javax.swing.JPasswordField password_input;
     // End of variables declaration//GEN-END:variables
 
 }

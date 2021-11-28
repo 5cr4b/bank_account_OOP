@@ -7,18 +7,16 @@ public class account extends bank{
     public String bank_id ;
     public String bank_password;
     public String user_name;
-    public String bank_name;
     public int user_money;
     // chuc nang chuyen,nap,ru tien & kich hoat tin nhan gui ve
     // xem thong tin TK , lich su giao dich
     // doc tin nhan ngan hang
     
     // tạo contructor lúc đăng kí
-    public account(String bank_id , String bank_password , String user_name , String bank_name, int user_money){
+    public account(String bank_id , String bank_password , String user_name ,  int user_money){
         this.bank_id = bank_id;
         this.bank_password = bank_id;
         this.user_name = user_name;
-        this.bank_name = bank_name;
         this.user_money = user_money;
 
     }   
@@ -45,12 +43,6 @@ public class account extends bank{
     public void set_username(String user_name){
         this.user_name = user_name;
     }
-    public String get_bank_name(){
-        return this.bank_name;
-    }
-    public void set_bank_name(String bank_name){
-        this.bank_name = bank_name;
-    } 
     public int get_user_money(){
         return this.user_money;
     }
@@ -92,48 +84,18 @@ public class account extends bank{
     public boolean chuyen_tien(account account,String id , String password ,int so_tien){
         String type1 = "chuyen";
         String type2 = "nhan";
-        switch (id){
-            case "java123":
-                if (this.get_bankPassword().equals(password) && this.get_user_money() >= so_tien){
-                    this.set_user_money((int)this.get_user_money() - so_tien);
-                    account.set_user_money((int) account.get_user_money() + so_tien);
+        if (this.get_bankPassword().equals(password) && this.get_user_money() >= so_tien){
+            this.set_user_money(this.get_user_money() - so_tien);
+            account.set_user_money(account.get_user_money() + so_tien);
 
-                    // luu vao lich su giao dich cua nguoi nhan/gui
-                    this.list_history.add(this.create_history(so_tien, account.get_bank_id() , account.get_bank_name(),type1));
-                    account.list_history.add(this.create_history(so_tien, this.get_bank_id(), this.get_bank_name(),type2));
-                    this.list_message.add(noti_bank(account.get_bank_id(), account.get_bank_name(), so_tien,type1));
-                    account.list_message.add(noti_bank(this.get_bank_id() , this.get_bank_name() , so_tien,type2));
-                    return true;
-                }
-                return false;
-
-            case "Tuan_super_vip_pro123":
-                if (this.get_bankPassword().equals(password) && this.get_user_money() >= so_tien){
-                    this.set_user_money((int)this.get_user_money() - so_tien);
-                    account.set_user_money((int) account.get_user_money() + so_tien);
-
-                    // luu vao lich su giao dich cua nguoi nhan/gui
-                    this.list_history.add(this.create_history(so_tien, account.get_bank_id() , account.get_bank_name(),type1));
-                    account.list_history.add(this.create_history(so_tien, this.get_bank_id(), this.get_bank_name(),type2));
-                    this.list_message.add(noti_bank(account.get_bank_id(), account.get_bank_name(), so_tien,type1));
-                    account.list_message.add(noti_bank(this.bank_id , this.bank_name , so_tien,type2));
-                    return true;
-                }
-            case "peter_from_usa":
-                if (this.get_bankPassword().equals(password) && this.get_user_money() >= so_tien){
-                    this.set_user_money((int)this.get_user_money() - so_tien);
-                    account.set_user_money((int) account.get_user_money() + so_tien);
-
-                    // luu vao lich su giao dich cua nguoi nhan/gui
-                    this.list_history.add(this.create_history(so_tien, account.get_bank_id() , account.get_bank_name(),type1));
-                    account.list_history.add(this.create_history(so_tien, this.get_bank_id(), this.get_bank_name(),type2));
-                    this.list_message.add(noti_bank(account.get_bank_id(), account.get_bank_name(), so_tien,type1));
-                    account.list_message.add(noti_bank(this.bank_id , this.bank_name , so_tien,type2));
-                    return true;
-                }
-            default:
-                return false;
+            // luu vao lich su giao dich cua nguoi nhan/gui
+            this.list_history.add(this.create_history(so_tien, account.get_bank_id(), type1));
+            account.list_history.add(this.create_history(so_tien, this.get_bank_id(),type2));
+            this.list_message.add(noti_bank(account.get_bank_id(), so_tien,type1));
+            account.list_message.add(noti_bank(this.get_bank_id() , so_tien,type2));
+            return true;
         }
+        return false;
     }
 
 

@@ -37,9 +37,9 @@
                               <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="money_input" min="-2" pref="249" max="-2" attributes="0"/>
-                              <Component id="password_input" min="-2" pref="240" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="money_input" pref="249" max="32767" attributes="0"/>
+                              <Component id="password_input" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       </Group>
@@ -112,7 +112,7 @@
         <Property name="text" type="java.lang.String" value="S&#x1ed1; ti&#x1ec1;n"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="password_input">
+    <Component class="javax.swing.JPasswordField" name="password_input">
     </Component>
   </SubComponents>
 </Form>
