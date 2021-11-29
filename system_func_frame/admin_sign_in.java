@@ -1,21 +1,24 @@
 package system_func_frame;
 import src.account;
 import src.admin;
+import src.bank;
 public class admin_sign_in extends javax.swing.JFrame {
-    protected admin admin;
-    protected account tuan123;
-    protected account linda1;
-    protected account peter010;
+     admin admin;
+     account tuan123;
+     account linda1;
+     account peter010;
+     bank bank;
     public admin_sign_in() {
         initComponents();
     }
 
-    public admin_sign_in(admin admin, account tuan123,account linda1,account peter010) {
+    public admin_sign_in(admin admin,bank bank, account tuan123,account linda1,account peter010) {
         initComponents();
         this.admin = admin;
         this.tuan123 = tuan123;
         this.linda1 =  linda1;
         this.peter010 = peter010;
+        this.bank = bank;
     }
 
 
@@ -117,7 +120,7 @@ public class admin_sign_in extends javax.swing.JFrame {
         String bank_id  = id_input.getText();
         String password = password_input.getText();
         if(this.admin.admin_sign_in(bank_id, password)){
-            admin_frame adminMenu = new admin_frame(this.admin,this.tuan123,this.linda1,this.peter010);
+            admin_frame adminMenu = new admin_frame(this.admin,this.bank,this.tuan123,this.linda1,this.peter010);
             adminMenu.setVisible(true);
             this.setVisible(false);
         }

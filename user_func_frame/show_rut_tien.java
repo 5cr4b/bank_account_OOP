@@ -1,6 +1,6 @@
 package user_func_frame;
-import noti_frame.rut_tien_fail;
-import noti_frame.rut_tien_success;
+import noti_frame.fail;
+import noti_frame.success;
 import src.account;
 
 public class show_rut_tien extends javax.swing.JFrame {
@@ -111,16 +111,21 @@ public class show_rut_tien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rut_tien_doActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rut_tien_doActionPerformed
+       try{
         String nap_tien = so_tien_input.getText();
         int nap_tien1 = Integer.parseInt(nap_tien);
         String password = password_input.getText();
         if(this.acc.rut_tien(nap_tien1,password)){
-            rut_tien_success  rut_tien_success = new rut_tien_success();
+            success  rut_tien_success = new success();
             rut_tien_success.setVisible(true);  
         }
         else{
-            rut_tien_fail rut_tien_fail = new rut_tien_fail();
+            fail rut_tien_fail = new fail();
             rut_tien_fail.setVisible(true);
+        }
+        }catch(NumberFormatException ex){
+            fail fail = new  fail();
+            fail.setVisible(true);
         }
     }//GEN-LAST:event_rut_tien_doActionPerformed
 

@@ -1,28 +1,25 @@
 package system_func_frame;
-
-import main_frame.sign_in_up;
 import src.account;
 import src.admin;
+import src.bank;
 
 public class admin_frame extends javax.swing.JFrame {
-    protected admin admin;
-    protected account tuan123; 
-    protected account linda1; 
-    protected account peter010; 
+     admin admin;
+     account tuan123; 
+     account linda1; 
+     account peter010;
+     bank bank;
     
     public admin_frame() {
         initComponents();
     }
-    public admin_frame(admin admin) {
-        initComponents();
-        this.admin = admin;
-    }
-    public admin_frame(admin admin , account tuan123 , account linda1 , account peter010) {
+    public admin_frame(admin admin ,bank bank, account tuan123 , account linda1 , account peter010) {
         initComponents();
         this.admin = admin;
         this.tuan123 = tuan123;
         this.linda1 = linda1;
         this.peter010 = peter010;
+        this.bank =  bank;
     }
 
     @SuppressWarnings("unchecked")
@@ -62,6 +59,11 @@ public class admin_frame extends javax.swing.JFrame {
         });
 
         jButton3.setText("Liệt kê tài khoản");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Thư đã gửi");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -193,13 +195,19 @@ public class admin_frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-
+        search search2 = new search(this.admin,this.tuan123,this.linda1,this.peter010);
+        search2.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        search search1 = new search(this.tuan123,this.linda1,this.peter010);
+        search search1 = new search(this.admin,this.tuan123,this.linda1,this.peter010);
         search1.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        show_list_id list = new show_list_id(this.bank);
+        list.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

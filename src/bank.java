@@ -2,13 +2,7 @@ package src;
 import java.util.ArrayList;
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;   
-import java.io.IOException;
-import java.awt.Desktop;
-import java.io.File;
-import java.io.FileWriter;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class bank{
     // tạo bank & tạo người dùng
@@ -79,50 +73,7 @@ public class bank{
         return myarr;
     }
     
-    public void send_noti_to_pc(account acc,String message){
-        String bank_id  = acc.get_bank_id();
-            switch (bank_id){
-                case "java123":
-                    try {
-                        Desktop.getDesktop().open(new File("home/cr4b/bank/java123"));
-                        FileWriter fWriter = new FileWriter("/home/cr4b/bank/java123/saoke.txt");
-                        fWriter.write(message);
-                        fWriter.close();
-                    }
-                    catch (IOException ex) {
-                        Logger.getLogger(bank.class.getName()).log(Level.SEVERE, null, ex);
-                        System.out.print(ex.getMessage());
-                    }
-                break;
-                case "tuan_super_vip_pro123":
-                   try {
-                        Desktop.getDesktop().open(new File("home/cr4b/bank/tuan_super_vip_pro123"));
-                        FileWriter fWriter = new FileWriter("/home/cr4b/bank/tuan_super_vip_pro123/saoke.txt");
-                        fWriter.write(message);
-                        fWriter.close();
-                    }
-                    catch (IOException ex) {
-                        Logger.getLogger(bank.class.getName()).log(Level.SEVERE, null, ex);
-                        System.out.print(ex.getMessage());
-                    }break;
-                case "peter_from_usa":
-                    try {
-                        Desktop.getDesktop().open(new File("home/cr4b/bank/peter_from_usa"));
-                        FileWriter fWriter = new FileWriter("/home/cr4b/bank/peter_from_usa/saoke.txt");
-                        fWriter.write(message);
-                        fWriter.close();
-                    }
-                    catch (IOException ex) {
-                        Logger.getLogger(bank.class.getName()).log(Level.SEVERE, null, ex);
-                        System.out.print(ex.getMessage());
-                    }break;
-                default:
-                    ;
-            }        
-    }
-    
-       
-
+      
      // overload noti_bank
     // trigger thong bao chuyen tien
     public String[] noti_bank(String bank_id,  int so_tien, String type){

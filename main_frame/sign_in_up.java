@@ -1,11 +1,9 @@
 package main_frame;
+import noti_frame.fail;
+import noti_frame.success;
 import src.bank;
 import src.account;
-import noti_frame.sign_in_fail;
-import noti_frame.sign_up_fail;
-import noti_frame.sign_up_success;
 import src.admin;
-import system_func_frame.admin_frame;
 import system_func_frame.admin_sign_in;
 
 public class sign_in_up extends javax.swing.JFrame {
@@ -298,7 +296,7 @@ public class sign_in_up extends javax.swing.JFrame {
                     
                 }
                 else{
-                    sign_in_fail fail = new sign_in_fail();
+                    fail fail = new fail();
                     fail.setVisible(true);
                 }   
                 break;
@@ -309,7 +307,7 @@ public class sign_in_up extends javax.swing.JFrame {
                     this.setVisible(false);
                 }
                 else{
-                    sign_in_fail fail = new sign_in_fail();
+                    fail fail = new fail();
                     fail.setVisible(true);
                 }   
                 break;
@@ -320,12 +318,12 @@ public class sign_in_up extends javax.swing.JFrame {
                     this.setVisible(false);
                 }
                 else{
-                    sign_in_fail fail = new sign_in_fail();
+                    fail fail = new fail();
                     fail.setVisible(true);
                 }   
                 break;
             default:
-                sign_in_fail fail = new sign_in_fail();
+                fail fail = new fail();
                 fail.setVisible(true);
                        
             break;
@@ -337,7 +335,7 @@ public class sign_in_up extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        admin_sign_in admin1 = new admin_sign_in(admin,this.tuan123,this.linda1,this.peter010);
+        admin_sign_in admin1 = new admin_sign_in(admin,this.bank_system,this.tuan123,this.linda1,this.peter010);
         admin1.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -358,46 +356,52 @@ public class sign_in_up extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void sign_up_doActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sign_up_doActionPerformed
-        String bank_id = soTK_input.getSelectedItem().toString();
-        String password = password_input.getText();
-        String name = name_input.getText();
-        String nap_tien = nap_tien_input.getText();
-        int nap_tien1 = Integer.parseInt(nap_tien);
+        try{
+            String bank_id = soTK_input.getSelectedItem().toString();
+            String password = password_input.getText();
+            String name = name_input.getText();
+            String nap_tien = nap_tien_input.getText();
+            int nap_tien1 = Integer.parseInt(nap_tien);
 
-        switch (bank_id) {
-            case "tuan123":
-            if(bank_system.sign_up(tuan123,bank_id, password, name,  nap_tien1)){
-                sign_up_success success = new sign_up_success();
-                success.setVisible(true);
-            }
-            else{
-                sign_up_fail fail = new sign_up_fail();
-                fail.setVisible(true);
-            }   break;
-            case "linda1":
-            if(bank_system.sign_up(linda1,bank_id, password, name, nap_tien1)){
-                sign_up_success success = new sign_up_success();
-                success.setVisible(true);
-            }
-            else{
-                sign_up_fail fail = new sign_up_fail();
-                fail.setVisible(true);
-            }   break;
+            switch (bank_id) {
+                case "tuan123":
+                if(bank_system.sign_up(tuan123,bank_id, password, name,  nap_tien1)){
+                    success success = new success();
+                    success.setVisible(true);
+                }
+                else{
+                    fail fail = new fail();
+                    fail.setVisible(true);
+                }   break;
+                case "linda1":
+                if(bank_system.sign_up(linda1,bank_id, password, name, nap_tien1)){
+                    success success = new success();
+                    success.setVisible(true);
+                }
+                else{
+                    fail fail = new fail();
+                    fail.setVisible(true);
+                }   break;
 
-            case "peter010":
-            if(bank_system.sign_up(peter010,bank_id, password, name, nap_tien1)){
-                sign_up_success success = new sign_up_success();
-                success.setVisible(true);
-            }
-            else{
-                sign_up_fail fail = new sign_up_fail();
-                fail.setVisible(true);
-            }   break;
+                case "peter010":
+                if(bank_system.sign_up(peter010,bank_id, password, name, nap_tien1)){
+                    success success = new success();
+                    success.setVisible(true);
+                }
+                else{
+                    fail fail = new fail();
+                    fail.setVisible(true);
+                }   break;
 
-            default:
-                sign_up_fail fail = new sign_up_fail();
-                fail.setVisible(true);
-            break;
+                default:
+                    fail fail = new fail();
+                    fail.setVisible(true);
+                break;
+            }
+        }
+        catch(NumberFormatException ex){
+            fail fail = new  fail();
+            fail.setVisible(true);
         }
     }//GEN-LAST:event_sign_up_doActionPerformed
 

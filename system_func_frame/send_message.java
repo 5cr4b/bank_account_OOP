@@ -1,6 +1,6 @@
 package system_func_frame;
-import noti_frame.gui_fail;
-import noti_frame.gui_success;
+import noti_frame.success;
+import noti_frame.fail;
 import src.account;
 import src.admin;
 public class send_message extends javax.swing.JFrame {
@@ -110,21 +110,21 @@ public class send_message extends javax.swing.JFrame {
             switch (id){
                 case "tuan123":
                     this.admin.send_message(tuan123, content);
-                    gui_success success = new gui_success();
+                    success success = new success();
                     success.setVisible(true);
                 break;
                 case "linda1":
                     this.admin.send_message(linda1, content);
-                    gui_success success1 = new gui_success();
+                    success success1 = new success();
                     success1.setVisible(true);
                 break;
                 case "peter010":
                     this.admin.send_message(peter010, content);
-                    gui_success success2 = new gui_success();
+                    success success2 = new success();
                     success2.setVisible(true);
                 break;
                 default:
-                    gui_fail fail = new gui_fail();
+                    fail fail = new fail();
                     fail.setVisible(true);
             }       
     }//GEN-LAST:event_jButton1ActionPerformed

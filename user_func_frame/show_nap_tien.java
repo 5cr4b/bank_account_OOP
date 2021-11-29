@@ -1,7 +1,6 @@
 package user_func_frame;
-
-import noti_frame.nap_tien_fail1;
-import noti_frame.nap_tien_success;
+import noti_frame.fail;
+import noti_frame.success;
 import src.account;
 
 public class show_nap_tien extends javax.swing.JFrame {
@@ -106,16 +105,22 @@ public class show_nap_tien extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void nap_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nap_buttonActionPerformed
-        String nap_tien = nap_tien_input.getText();
-        int nap_tien1 = Integer.parseInt(nap_tien);
-        String password = password_input.getText();
-        if(this.acc.nap_tien(nap_tien1,password)){
-            nap_tien_success  nap_tien_noti = new nap_tien_success();
-            nap_tien_noti.setVisible(true);
+        try{
+            String nap_tien = nap_tien_input.getText();
+            int nap_tien1 = Integer.parseInt(nap_tien);
+            String password = password_input.getText();
+            if(this.acc.nap_tien(nap_tien1,password)){
+                success  nap_tien_noti = new success();
+                nap_tien_noti.setVisible(true);
+            }
+            else{
+                fail nap_tien_fail = new fail();
+                nap_tien_fail.setVisible(true);
+            }
         }
-        else{
-            nap_tien_fail1 nap_tien_fail = new nap_tien_fail1();
-            nap_tien_fail.setVisible(true);
+        catch(NumberFormatException ex){
+            fail fail = new  fail();
+            fail.setVisible(true);
         }
     }//GEN-LAST:event_nap_buttonActionPerformed
 

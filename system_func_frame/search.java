@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package system_func_frame;
 
+import noti_frame.success;
 import src.account;
+import src.admin;
 
 /**
  *
@@ -14,19 +12,24 @@ public class search extends javax.swing.JFrame {
     account tuan123;
     account linda1;
     account peter010;
+    admin admin;
     /**
      * Creates new form search
      */
     public search() {
         initComponents();
     }
-    public search(account tuan123,account linda1,account peter010) {
+    
+    // sao ke Tk
+    public search(admin admin,account tuan123,account linda1,account peter010) {
         initComponents();
         this.tuan123 = tuan123;
         this.linda1 = linda1;
         this.peter010 = peter010;
+        this.admin = admin;
     }
-
+    
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,10 +41,16 @@ public class search extends javax.swing.JFrame {
 
         name_input = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        name_input.setText("name...");
+        name_input.setText("saoKe_tên + info_tên");
+        name_input.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                name_inputActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("ok");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -50,25 +59,37 @@ public class search extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Hủy");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(name_input, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(name_input, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(jButton2)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addContainerGap(60, Short.MAX_VALUE)
                 .addComponent(name_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(jButton1))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)))
         );
 
         pack();
@@ -77,22 +98,45 @@ public class search extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        String name = name_input.getText();
        switch (name){
-           case "tuan123":
+           case "info_tuan123":
              show_info_user show_info_user = new show_info_user(this.tuan123);
              show_info_user.setVisible(true);
            break;
-           case "linda1":
+           case "info_linda1":
              show_info_user show_info_user1 = new show_info_user(this.linda1);
              show_info_user1.setVisible(true);
            break;
-           case "peter010":
+           case "info_peter010":
              show_info_user show_info_user2 = new show_info_user(this.peter010);
              show_info_user2.setVisible(true);
+           break;
+           case "saoKe_tuan123":
+             success suc2 = new success();
+             this.admin.sao_ke(this.tuan123);
+             suc2.setVisible(true);
+           break;
+           case "saoKe_linda1":
+             success suc = new success();
+             this.admin.sao_ke(this.linda1);
+             suc.setVisible(true);
+           break;
+           case "saoKe_peter010":
+             success suc1 = new success();
+             this.admin.sao_ke(this.peter010);
+             suc1.setVisible(true);  
            break;
            default:
                ;
        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void name_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_inputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_name_inputActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,6 +175,7 @@ public class search extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JTextField name_input;
     // End of variables declaration//GEN-END:variables
 }

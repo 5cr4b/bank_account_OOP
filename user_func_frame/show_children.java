@@ -1,7 +1,6 @@
 package user_func_frame;
-
-import noti_frame.chuyen_tien_fail;
-import noti_frame.rut_tien_success;
+import noti_frame.fail;
+import noti_frame.success;
 import src.account;
 
 
@@ -112,17 +111,22 @@ public class show_children extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String money = money_input.getText();
-        int nap_tien1 = Integer.parseInt(money);
-        String password = password_input.getText();
-        if(this.acc.rut_tien(nap_tien1,password)){
-            rut_tien_success  rut_tien_success = new rut_tien_success();
-            rut_tien_success.setVisible(true);  
-        }
-        else{
-            chuyen_tien_fail chuyen_tien_fail = new chuyen_tien_fail();
-            chuyen_tien_fail.setVisible(true);
-        }
+        try{   
+            String money = money_input.getText();
+            int nap_tien1 = Integer.parseInt(money);
+            String password = password_input.getText();
+            if(this.acc.rut_tien(nap_tien1,password)){
+                success  success1 = new success();
+                success1.setVisible(true);  
+            }
+            else{
+                fail fail = new fail();
+                fail.setVisible(true);
+            }
+        } catch(NumberFormatException ex){
+                fail fail = new  fail();
+                fail.setVisible(true);
+            }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void password_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_inputActionPerformed

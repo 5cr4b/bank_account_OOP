@@ -1,6 +1,6 @@
 package user_func_frame;
-import noti_frame.chuyen_tien_fail;
-import noti_frame.chuyen_tien_success;
+import noti_frame.fail;
+import noti_frame.success;
 import src.account;
 import src.bank;
 
@@ -118,49 +118,54 @@ public class show_chuyen_tien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String id = id_input.getText();
-        String password = password_input.getText();
-        String money = money_input.getText();
-        int nap_tien1 = Integer.parseInt(money);
-        // vua nhan && vua chuyen ??
-        
-        switch (id){
-            case "peter010":
-                if(this.acc.chuyen_tien(this.peter010, id , password ,nap_tien1)){
-                    chuyen_tien_success success = new chuyen_tien_success();
-                    success.setVisible(true);
-                }
-                else{
-                    chuyen_tien_fail fail = new chuyen_tien_fail();
-                    fail.setVisible(true);
-                }
+        try{
+            String id = id_input.getText();
+            String password = password_input.getText();
+            String money = money_input.getText();
+            int nap_tien1 = Integer.parseInt(money);
+            // vua nhan && vua chuyen ??
+
+            switch (id){
+                case "peter010":
+                    if(this.acc.chuyen_tien(this.peter010, id , password ,nap_tien1)){
+                        success success = new success();
+                        success.setVisible(true);
+                    }
+                    else{
+                        fail fail = new fail();
+                        fail.setVisible(true);
+                    }
+                    break;
+
+                case "linda1":
+                    if(this.acc.chuyen_tien(this.linda1, id , password ,nap_tien1)){
+                        success success = new success();
+                        success.setVisible(true);
+                    }
+                    else{
+                        fail fail = new fail();
+                        fail.setVisible(true);
+                    }
+                    break;
+                case "tuan123":
+                    if(this.acc.chuyen_tien(this.tuan123, id , password ,nap_tien1)){
+                        success success = new success();
+                        success.setVisible(true);
+                    }
+                    else{
+                        fail fail = new fail();
+                        fail.setVisible(true);
+                    }
+                    break;
+                default: 
+                    fail fail = new fail();
+                    fail.setVisible(true); 
                 break;
-               
-            case "linda1":
-                if(this.acc.chuyen_tien(this.linda1, id , password ,nap_tien1)){
-                    chuyen_tien_success success = new chuyen_tien_success();
-                    success.setVisible(true);
-                }
-                else{
-                    chuyen_tien_fail fail = new chuyen_tien_fail();
-                    fail.setVisible(true);
-                }
-                break;
-            case "tuan123":
-                if(this.acc.chuyen_tien(this.tuan123, id , password ,nap_tien1)){
-                    chuyen_tien_success success = new chuyen_tien_success();
-                    success.setVisible(true);
-                }
-                else{
-                    chuyen_tien_fail fail = new chuyen_tien_fail();
-                    fail.setVisible(true);
-                }
-                break;
-            default: 
-                chuyen_tien_fail fail = new chuyen_tien_fail();
-                fail.setVisible(true); 
-            break;
-        }        
+            }  
+        }catch(NumberFormatException ex){
+           fail fail = new  fail();
+           fail.setVisible(true);
+       }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
