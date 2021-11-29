@@ -1,0 +1,13 @@
+{
+  "type_jdk":
+    {
+      "name-jdk" : "openjdk",
+      "version" : 11.0.11
+    },
+
+  "IDE":
+    {
+      "name" : "apache netbean",
+      "version" : 12.5
+    }
+}

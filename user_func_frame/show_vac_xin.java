@@ -1,6 +1,6 @@
 package user_func_frame;
 import noti_frame.fail;
-import noti_frame.ung_ho_success;
+import noti_frame.success;
 import src.account;
 
 /**
@@ -114,8 +114,8 @@ public class show_vac_xin extends javax.swing.JFrame {
         String password = password_input.getText();
 
         if(this.acc.rut_tien(nap_tien1,password)){
-            ung_ho_success  ung_ho_success = new ung_ho_success();
-            ung_ho_success.setVisible(true);  
+            success  success = new success();
+            success.setVisible(true);  
             }
         else{
             fail tien_fail = new fail();
