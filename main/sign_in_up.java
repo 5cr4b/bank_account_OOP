@@ -1,4 +1,4 @@
-package main_frame;
+package main;
 import noti_frame.fail;
 import noti_frame.success;
 import src.bank;

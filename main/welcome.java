@@ -1,9 +1,8 @@
-package main_frame;
-import system_func_frame.admin_frame;
+package main;
 import src.account;
 import src.bank;
 
-public class welcome extends javax.swing.JFrame {
+public class welcome  extends javax.swing.JFrame {
 
     // tạo ngân hàng
     bank bank_system = new bank();
@@ -12,7 +11,7 @@ public class welcome extends javax.swing.JFrame {
     account tuan123=new account();
     account linda1 = new account();
     account peter010 = new account();
-    public welcome() {
+    public welcome(){
         initComponents();
     }
 
@@ -121,9 +120,11 @@ public class welcome extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create        //</editor-fold>
+        //</editor-fold>
+ and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+            public void run(){
                 new welcome().setVisible(true);
             }
         });

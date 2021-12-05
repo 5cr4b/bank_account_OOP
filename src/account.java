@@ -68,7 +68,7 @@ public class account extends bank{
     // add lich su gd
     public boolean rut_tien(int so_tien, String password){
         // show anh rut tien
-        if (this.get_bankPassword().equals(password) && this.user_money >= so_tien){
+        if (this.get_bankPassword().equals(password) && this.user_money >= so_tien && so_tien >= 0){
             String type = "rut";
             this.set_user_money(this.user_money - so_tien);
             this.list_history.add(this.create_history(so_tien,type));
@@ -84,7 +84,7 @@ public class account extends bank{
     public boolean chuyen_tien(account account,String id , String password ,int so_tien){
         String type1 = "chuyen";
         String type2 = "nhan";
-        if (this.get_bankPassword().equals(password) && this.get_user_money() >= so_tien){
+        if (this.get_bankPassword().equals(password) && this.get_user_money() >= so_tien && so_tien >= 0){
             this.set_user_money(this.get_user_money() - so_tien);
             account.set_user_money(account.get_user_money() + so_tien);
 

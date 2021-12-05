@@ -1,4 +1,4 @@
-package main_frame;
+package main;
 import src.account;
 import user_func_frame.show_hop_thu;
 import user_func_frame.show_gd;
