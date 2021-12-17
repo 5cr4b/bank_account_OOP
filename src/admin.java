@@ -40,6 +40,40 @@ public class admin extends bank{
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // send message to some body
     public void send_message(account account, String message){
         account.list_message.add(this.message_time(account.get_username(),message));

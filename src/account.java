@@ -1,83 +1,104 @@
 package src;
-import java.util.ArrayList;
-import java.time.format.DateTimeFormatter;  
-import java.time.LocalDateTime;   
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-
-public class bank{
-
-    public ArrayList<String> list_id_registed = new ArrayList<String>();
-    public ArrayList<String[]> list_history = new ArrayList<String[]>();
-    public ArrayList<String[]> list_message = new ArrayList<String[]>();
+public class account extends bank implements vip , red_zone{
+    public String bank_id ;
+    public String bank_password;
+    public String user_name;
+    public int user_money;
+    // chuc nang chuyen,nap,ru tien & kich hoat tin nhan gui ve
+    // xem thong tin TK , lich su giao dich
+    // doc tin nhan ngan hang
     
-    
-
-    public bank(){
-
-    } 
-
-
-    // ----------------end getter, setter ----------------------
-    
-    public ArrayList get_list_history(){
-        return this.list_history;
-    }
-    public void set_list_history(String[] content){
-        this.list_history.add(content);
-    }
-    public ArrayList get_list_message(){
-        return this.list_message;
-    }
-    public void set_list_message(String[] content){
-        this.list_message.add(content);
-    }
-    // ----------------------sign up-----------
-    
-    public boolean sign_up(account acc ,String bank_id,String bank_password , String user_name, int user_money ){
-        // xem có trùng tài khoản k & mật khẩu k trùng
-        if(check_sign_up(bank_id) && bank_password != null){       
-            acc.set_bankPassword(bank_password);
-            acc.set_bank_id(bank_id);
-            acc.set_user_money(user_money);
-            acc.set_username(user_name);
-            this.list_id_registed.add(bank_id); // thêm vào danh sách đã đăng kí
-            return true;
-        }
-        return false;
-
-    }
-    
-    // kiểm tra trùng id 
-    protected boolean check_sign_up(String bank_id){
-        for(String i : this.list_id_registed) {
-            if(i.equals(bank_id)){
-                return false;
-            }
-        }
-        return true;
-    }    
+    // tạo contructor lúc đăng kí
+    public account(String bank_id , String bank_password , String user_name ,  int user_money){
+        this.bank_id = bank_id;
+        this.bank_password = bank_id;
+        this.user_name = user_name;
+        this.user_money = user_money;
         
-    // đăng nhập 
-    public boolean sign_in(account account, String bank_id ,String  password){
-        if(account.get_bank_id().equals(bank_id) && account.get_bankPassword().equals(password)){
+
+    }   
+    // constructor để khởi tạo account sẵn
+    public account(){
+    }
+    
+            
+    public String get_bank_id(){
+        return this.bank_id;
+    }
+    public void set_bank_id(String bank_id){
+        this.bank_id = bank_id;
+    }
+    public String get_bankPassword(){
+        return this.bank_password;
+    }
+    public void set_bankPassword(String bank_password){
+        this.bank_password =  bank_password;
+    }
+    public String get_username(){
+        return this.user_name;
+    }
+    public void set_username(String user_name){
+        this.user_name = user_name;
+    }
+    public int get_user_money(){
+        return this.user_money;
+    }
+    public void set_user_money(int user_money){
+        this.user_money = user_money;
+    }
+
+    
+    
+    // chuc nang nap tien 
+    public boolean nap_tien(int so_tien ,String  password){
+        if (this.get_bankPassword().equals(password) && so_tien >= 0){
+            String type = "nap";
+            this.set_user_money(so_tien + this.user_money);
+            this.set_list_history(this.create_history(so_tien,type));
+            // trigger tin nhan thong bao
+            this.set_list_message(this.noti_bank(so_tien,type));
+            return true;
+        }
+        return false;
+    }
+        
+    //rut tien 
+    // add lich su gd
+    public boolean rut_tien(int so_tien, String password){
+        // show anh rut tien
+        if (this.get_bankPassword().equals(password) && this.user_money >= so_tien && so_tien >= 0){
+            String type = "rut";
+            this.set_user_money(this.user_money - so_tien);
+            this.set_list_history(this.create_history(so_tien,type));
+            this.set_list_message(this.noti_bank(so_tien,type));
+            return true;    
+        }
+        return false;
+    }
+
+
+    //chuyen tien
+    // add lich su gd   
+    public boolean chuyen_tien(account account,String id , String password ,int so_tien){
+        String type1 = "chuyen";
+        String type2 = "nhan";
+        if (this.get_bankPassword().equals(password) && this.get_user_money() >= so_tien && so_tien >= 0){
+            this.set_user_money(this.get_user_money() - so_tien);
+            account.set_user_money(account.get_user_money() + so_tien);
+
+            // luu vao lich su giao dich cua nguoi nhan/gui
+            this.set_list_history(this.create_history(so_tien, account.get_bank_id(), type1));
+            account.set_list_history(this.create_history(so_tien, this.get_bank_id(),type2));
+            this.set_list_message(noti_bank(account.get_bank_id(), so_tien,type1));
+            account.set_list_message(noti_bank(this.get_bank_id() , so_tien,type2));
             return true;
         }
         return false;
     }
     
-    
-    // tạo tin nhắn  và trả về  tin nhắn
-    // create array message with time & content
-    public String[] message_time(String reciever , String message){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-        LocalDateTime now = LocalDateTime.now();  
-        String[] myarr = {reciever ,(String) dtf.format(now), message};
-        return myarr;
-    }
-    
-      
-     // overload noti_bank
-    // trigger thong bao chuyen tien
     public String[] noti_bank(String bank_id,  int so_tien, String type){
         switch (type){
             case "chuyen":
@@ -165,4 +186,6 @@ public class bank{
             return null;
         }   
     }
-}
+} 
+
+
