@@ -15,10 +15,9 @@ public class show_chuyen_tien extends javax.swing.JFrame {
         initComponents();
     }
     
-    public show_chuyen_tien(account acc,bank bank_system,account tuan123,account linda1 ,account peter010) {
+    public show_chuyen_tien(account acc,account tuan123,account linda1 ,account peter010) {
         initComponents();
         this.acc  = acc;
-        this.bank  = bank_system;
         this.tuan123 = tuan123;
         this.linda1 = linda1;
         this.peter010 = peter010;

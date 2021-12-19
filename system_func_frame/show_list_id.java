@@ -1,25 +1,20 @@
 package system_func_frame;
 
-import java.util.Arrays;
-import src.bank;
+import src.team_it;
 
-/**
- *
- * @author cr4b
- */
 public class show_list_id extends javax.swing.JFrame {
-    bank bank;
-    public show_list_id() {
+    team_it teamIT;
+
+    public show_list_id(team_it teamIT) {
         initComponents();
-    }
-    public show_list_id(bank bank) {
-        initComponents();
-        this.bank = bank;
         String  s = "" ;
-        for(String a : bank.list_id_registed){
+        for(String a : teamIT.list_id_registed){
             s += a +"\n";
         }
         show.setText(s);
+    }
+    public show_list_id() {
+        initComponents();
     }
     
     @SuppressWarnings("unchecked")

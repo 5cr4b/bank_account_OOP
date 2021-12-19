@@ -3,24 +3,25 @@ import noti_frame.fail;
 import noti_frame.success;
 import src.bank;
 import src.account;
-import src.admin;
-import system_func_frame.admin_sign_in;
+import src.team_it;
+import src.team_non_it;
+import system_func_frame.admin_frame;
 
 public class sign_in_up extends javax.swing.JFrame {
     account peter010;
     account linda1;
     account tuan123;
     bank bank_system;    
-    admin admin = new admin();
+    team_it teamIT;
+    team_non_it teamNonIt;
     
-
-    public sign_in_up(bank bank_system , account linda1 , account peter010,account tuan123) {
+    public sign_in_up(team_it teamIT,team_non_it teamNonIt , account linda1 , account peter010,account tuan123) {
         initComponents();
-        this.bank_system = bank_system;
+        this.teamIT = teamIT;
+        this.teamNonIt = teamNonIt;              
         this.tuan123 = tuan123;
         this.linda1 =  linda1;
-        this.peter010 = peter010;
-                
+        this.peter010 = peter010;                
     }
     public sign_in_up() {             
     }
@@ -53,7 +54,6 @@ public class sign_in_up extends javax.swing.JFrame {
         bank_id_input1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         password_input1 = new javax.swing.JPasswordField();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
@@ -214,13 +214,6 @@ public class sign_in_up extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("For admin");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -247,17 +240,13 @@ public class sign_in_up extends javax.swing.JFrame {
                         .addGap(42, 42, 42)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLayeredPane1)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jInternalFrame1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -286,11 +275,11 @@ public class sign_in_up extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String bank_id  = bank_id_input1.getText();
         String password = password_input1.getText();
-        
+        try{
         switch (bank_id) {
             case "peter010":
-                if(this.bank_system.sign_in(this.peter010,bank_id, password)){
-                    mainMenu main = new mainMenu(this.peter010,this.bank_system, this.tuan123,this.linda1 ,this.peter010);
+                if(teamIT.sign_in(this.peter010,bank_id, password)){
+                    mainMenu main = new mainMenu(this.peter010,this.teamIT,this.teamNonIt, this.tuan123,this.linda1 ,this.peter010);
                     main.setVisible(true);
                     this.setVisible(false);
                     
@@ -301,8 +290,8 @@ public class sign_in_up extends javax.swing.JFrame {
                 }   
                 break;
             case "tuan123":
-                if(this.bank_system.sign_in(this.tuan123,bank_id, password)){
-                    mainMenu main = new mainMenu(this.tuan123,this.bank_system, this.tuan123,this.linda1 ,this.peter010);
+                if(teamIT.sign_in(this.tuan123,bank_id, password)){
+                    mainMenu main = new mainMenu(this.tuan123,this.teamIT,this.teamNonIt, this.tuan123,this.linda1 ,this.peter010);
                     main.setVisible(true);
                     this.setVisible(false);
                 }
@@ -312,9 +301,31 @@ public class sign_in_up extends javax.swing.JFrame {
                 }   
                 break;
             case "linda1":
-                if(bank_system.sign_in(this.linda1,bank_id, password)){
-                    mainMenu main = new mainMenu(this.linda1,this.bank_system, this.tuan123,this.linda1 ,this.peter010);
+                if(teamIT.sign_in(this.linda1,bank_id, password)){
+                    mainMenu main = new mainMenu(this.linda1,this.teamIT,this.teamNonIt, this.tuan123,this.linda1 ,this.peter010);
                     main.setVisible(true);
+                    this.setVisible(false);
+                }
+                else{
+                    fail fail = new fail();
+                    fail.setVisible(true);
+                }   
+                break;
+            case "itSystem"  :
+                if(this.teamIT.sign_in(bank_id, password)){
+                    admin_frame adminMenu = new admin_frame(this.teamIT,this.teamNonIt,bank_id, this.tuan123,this.linda1,this.peter010);
+                    adminMenu.setVisible(true);
+                    this.setVisible(false);
+                }
+                else{
+                    fail fail = new fail();
+                    fail.setVisible(true);
+                }   
+                break;
+            case "nonIt":
+                if(this.teamNonIt.sign_in(bank_id, password)){
+                    admin_frame adminMenu = new admin_frame(this.teamIT,this.teamNonIt,bank_id, this.tuan123,this.linda1,this.peter010);
+                    adminMenu.setVisible(true);
                     this.setVisible(false);
                 }
                 else{
@@ -328,16 +339,16 @@ public class sign_in_up extends javax.swing.JFrame {
                        
             break;
         }
+        }
+        catch(NullPointerException ex){
+            fail fail = new  fail();
+            fail.setVisible(true);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        admin_sign_in admin1 = new admin_sign_in(admin,this.bank_system,this.tuan123,this.linda1,this.peter010);
-        admin1.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void soTK_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soTK_inputActionPerformed
         // TODO add your handling code here:
@@ -365,7 +376,7 @@ public class sign_in_up extends javax.swing.JFrame {
 
             switch (bank_id) {
                 case "tuan123":
-                if(bank_system.sign_up(tuan123,bank_id, password, name,  nap_tien1)){
+                if(teamIT.sign_up(tuan123,bank_id, password, name,  nap_tien1)){
                     success success = new success();
                     success.setVisible(true);
                 }
@@ -374,7 +385,7 @@ public class sign_in_up extends javax.swing.JFrame {
                     fail.setVisible(true);
                 }   break;
                 case "linda1":
-                if(bank_system.sign_up(linda1,bank_id, password, name, nap_tien1)){
+                if(teamIT.sign_up(linda1,bank_id, password, name, nap_tien1)){
                     success success = new success();
                     success.setVisible(true);
                 }
@@ -384,7 +395,7 @@ public class sign_in_up extends javax.swing.JFrame {
                 }   break;
 
                 case "peter010":
-                if(bank_system.sign_up(peter010,bank_id, password, name, nap_tien1)){
+                if(teamIT.sign_up(peter010,bank_id, password, name, nap_tien1)){
                     success success = new success();
                     success.setVisible(true);
                 }
@@ -445,7 +456,6 @@ public class sign_in_up extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel2;

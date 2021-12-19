@@ -1,84 +1,29 @@
 package src;
-
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
-public class admin extends bank{
-    //xem thông tin tài khoản user
-    // gửi tin nhắn cho user
-    // sao kê tài khỏan cho user
-    // liệt kê danh sách id
+public class team_non_it extends employee {
+    protected String nonit =  "nonIt";
+    protected String password1 = "password";
     
-    protected String admin_id;
-    protected String admin_password;
-    
-    public admin(){
-        this.admin_id = "admin";
-        this.admin_password = "passwd";
-    }
-    
-    // getter 
-    public String get_admin_id(){
-        return this.admin_id;
-    }
-    
-    public String get_admin_password(){
-        return this.admin_id;
-    }
-    
-    
-    
-    // quyền hạn quản trị viên      
-    public boolean admin_sign_in(String id , String password){
-        if(this.admin_id.equals(    id) && this.admin_password.equals(password)){
+    @Override
+    public void send_message(account account, String message){
+        account.list_message.add(message_time(account.get_username(),message));
+        list_message.add(message_time(account.get_username(),message));
+    } 
+    @Override
+    public boolean sign_in(String bank_id ,String  password){
+        if(nonit.equals(bank_id) && password1.equals(password)){
             return true;
         }
         return false;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // send message to some body
-    public void send_message(account account, String message){
-        account.list_message.add(this.message_time(account.get_username(),message));
-        this.list_message.add(this.message_time(account.get_username(),message));
-    }  
+    @Override
+    public ArrayList<String> get_registed(){
+        return list_id_registed;
+    }
     
         // check info & tranfer's history
     public void show_info_history(account account){
@@ -90,9 +35,7 @@ public class admin extends bank{
         for(String i[] : account.list_history) {
             System.out.println(Arrays.toString(i));
         }
-    }  
-    
-       // print file tranfer's history
+    } 
     public void sao_ke(account account){       
         try {
             // tao file trong ubuntu
@@ -109,6 +52,4 @@ public class admin extends bank{
             System.out.print(e.getMessage());
         }
     }
-    
-    
 }

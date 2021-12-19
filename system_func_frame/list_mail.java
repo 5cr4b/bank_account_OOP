@@ -1,24 +1,18 @@
 package system_func_frame;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import src.account;
-import src.admin;
-
+import src.team_non_it;
 
 public class list_mail extends javax.swing.JFrame {
-    ArrayList list_message;
-    admin admin;
+    team_non_it teamNonIt;
     
-    public list_mail() {
-        initComponents();
+    public list_mail(){
     }
     
-    public list_mail(admin admin) {
+    public list_mail(team_non_it teamNonIt) {
         initComponents();
-        this.admin = admin;
         String  s = "" ;
-        for(String[] a : admin.list_message){
+        this.teamNonIt = teamNonIt;
+        for(String[] a : teamNonIt.list_message){
             String b = Arrays.toString(a);
             s += b +"\n";
         }

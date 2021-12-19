@@ -1,25 +1,30 @@
 package system_func_frame;
+import main.sign_in_up;
+import main.welcome;
+import noti_frame.fail;
 import src.account;
-import src.admin;
-import src.bank;
+import src.team_it;
+import src.team_non_it;
 
 public class admin_frame extends javax.swing.JFrame {
-     admin admin;
-     account tuan123; 
-     account linda1; 
-     account peter010;
-     bank bank;
+    team_it teamIT;
+    team_non_it teamNonIt;
+    account tuan123; 
+    account linda1; 
+    account peter010;
+    String bank_id;
     
     public admin_frame() {
         initComponents();
     }
-    public admin_frame(admin admin ,bank bank, account tuan123 , account linda1 , account peter010) {
-        initComponents();
-        this.admin = admin;
+    public admin_frame(team_it teamIT,team_non_it teamNonIt,String bank_id,account tuan123 , account linda1 , account peter010) {
+        initComponents();  
+        this.teamIT = teamIT;
         this.tuan123 = tuan123;
         this.linda1 = linda1;
         this.peter010 = peter010;
-        this.bank =  bank;
+        this.teamNonIt = teamNonIt;
+        this.bank_id = bank_id;
     }
 
     @SuppressWarnings("unchecked")
@@ -41,6 +46,7 @@ public class admin_frame extends javax.swing.JFrame {
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
         jCheckBox5 = new javax.swing.JCheckBox();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,10 +102,17 @@ public class admin_frame extends javax.swing.JFrame {
 
         jCheckBox4.setText("Reset wifi ");
 
-        jCheckBox5.setText("Hack NASA bằng HTML");
+        jCheckBox5.setText("Tăng ca 2 tiếng");
         jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox5ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Làm ngân hàng mới");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
             }
         });
 
@@ -131,7 +144,8 @@ public class admin_frame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))))
+                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(32, 32, 32))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,7 +181,9 @@ public class admin_frame extends javax.swing.JFrame {
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addGap(31, 31, 31)
                 .addComponent(jButton6)
                 .addGap(34, 34, 34))
@@ -177,11 +193,13 @@ public class admin_frame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        sign_in_up sign_in2 = new sign_in_up(this.teamIT,this.teamNonIt,this.linda1, this.peter010,this.tuan123);
+        sign_in2.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        send_message message = new send_message(this.admin , this.tuan123, this.linda1,this.peter010);
+        send_message message = new send_message(this.teamNonIt,this.tuan123, this.linda1,this.peter010);
         message.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -190,24 +208,48 @@ public class admin_frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        list_mail mail = new list_mail(this.admin);
+        list_mail mail = new list_mail(this.teamNonIt);
         mail.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        search search2 = new search(this.admin,this.tuan123,this.linda1,this.peter010);
-        search2.setVisible(true);
+        if(this.bank_id.equals("nonIt")){
+            search search1 = new search(this.teamNonIt,this.tuan123,this.linda1,this.peter010);
+            search1.setVisible(true);
+        }
+        else{
+            fail fail = new fail();
+            fail.setVisible(true);
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        search search1 = new search(this.admin,this.tuan123,this.linda1,this.peter010);
-        search1.setVisible(true);
+        if(this.bank_id.equals("nonIt")){
+            search search1 = new search(this.teamNonIt,this.tuan123,this.linda1,this.peter010);
+            search1.setVisible(true);
+        }
+        else{
+            fail fail = new fail();
+            fail.setVisible(true);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        show_list_id list = new show_list_id(this.bank);
+        show_list_id list = new show_list_id(this.teamIT);
         list.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        if(this.bank_id.equals("itSystem")){
+            welcome welcome1 = new welcome();
+            welcome1.setVisible(true);
+        }
+        else{
+            this.setVisible(false);
+            fail fail = new fail();
+            fail.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,6 +295,7 @@ public class admin_frame extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;

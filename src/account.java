@@ -1,17 +1,15 @@
 package src;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
-public class account extends bank implements vip , red_zone{
+public class account extends bank implements vip , friendly{
     public String bank_id ;
     public String bank_password;
     public String user_name;
     public int user_money;
-    // chuc nang chuyen,nap,ru tien & kich hoat tin nhan gui ve
-    // xem thong tin TK , lich su giao dich
-    // doc tin nhan ngan hang
-    
-    // tạo contructor lúc đăng kí
+    public int fee = 2;
+
     public account(String bank_id , String bank_password , String user_name ,  int user_money){
         this.bank_id = bank_id;
         this.bank_password = bank_id;
@@ -51,15 +49,35 @@ public class account extends bank implements vip , red_zone{
     }
 
     
+    @Override
+    public boolean free_tranfer(ArrayList<String[]> list_history){
+        int number_tranfer = list_history.size();
+        if (number_tranfer > 10){
+            return true;
+        }
+        return false;
+    }
     
+    @Override
+    public boolean refund_money(int user_money){
+        if(user_money > 10000)
+            return true;
+        return false;
+    }
+ 
     // chuc nang nap tien 
     public boolean nap_tien(int so_tien ,String  password){
-        if (this.get_bankPassword().equals(password) && so_tien >= 0){
-            String type = "nap";
-            this.set_user_money(so_tien + this.user_money);
+        String type = "nap";
+        if (this.get_bankPassword().equals(password) && so_tien >= 100){
+            if(refund_money(this.get_user_money())){
+                this.set_user_money((so_tien/100) + this.user_money);
+            }     
+            if(free_tranfer(this.list_history)){
+                int fee = 0;
+            }
+            this.set_user_money(so_tien + this.user_money - fee);
             this.set_list_history(this.create_history(so_tien,type));
-            // trigger tin nhan thong bao
-            this.set_list_message(this.noti_bank(so_tien,type));
+            this.set_list_message(this.noti_bank(so_tien,type));  
             return true;
         }
         return false;
@@ -69,9 +87,15 @@ public class account extends bank implements vip , red_zone{
     // add lich su gd
     public boolean rut_tien(int so_tien, String password){
         // show anh rut tien
-        if (this.get_bankPassword().equals(password) && this.user_money >= so_tien && so_tien >= 0){
+        if (this.get_bankPassword().equals(password) && this.user_money - fee >= so_tien && so_tien - fee >= 100){
             String type = "rut";
-            this.set_user_money(this.user_money - so_tien);
+            if(refund_money(this.get_user_money())){
+                this.set_user_money((so_tien/100) + this.user_money);
+            }    
+            if(free_tranfer(this.list_history)){
+                int fee = 0;
+            }
+            this.set_user_money(this.user_money - so_tien -  fee);
             this.set_list_history(this.create_history(so_tien,type));
             this.set_list_message(this.noti_bank(so_tien,type));
             return true;    
@@ -86,7 +110,13 @@ public class account extends bank implements vip , red_zone{
         String type1 = "chuyen";
         String type2 = "nhan";
         if (this.get_bankPassword().equals(password) && this.get_user_money() >= so_tien && so_tien >= 0){
-            this.set_user_money(this.get_user_money() - so_tien);
+            if(refund_money(this.get_user_money())){
+                this.set_user_money((so_tien/100) + this.user_money);
+            }     
+            if(free_tranfer(this.list_history)){
+                int fee = 0;
+            }
+            this.set_user_money(this.get_user_money() - so_tien - fee);
             account.set_user_money(account.get_user_money() + so_tien);
 
             // luu vao lich su giao dich cua nguoi nhan/gui
@@ -98,7 +128,7 @@ public class account extends bank implements vip , red_zone{
         }
         return false;
     }
-    
+    @Override
     public String[] noti_bank(String bank_id,  int so_tien, String type){
         switch (type){
             case "chuyen":
@@ -120,6 +150,7 @@ public class account extends bank implements vip , red_zone{
                
     // trigger thong bao rut tien
     // tạo và trả về 1 mảng chứa nội dung nạp tiền
+    @Override
     public String[] noti_bank(int so_tien,String type){
         switch (type){
             case "nap":        
@@ -142,6 +173,7 @@ public class account extends bank implements vip , red_zone{
  
     //over load create history
     // tao tin nhắn thêm vào lịch sử giao dịch khi nap tien Chuyen tien
+    @Override
     public String[] create_history(int so_tien, String user_id,String type){
          // loai + time + stk nguoi nhan + ngan hang nguoi nhan + so tien
         String type1 = "chuyen";
@@ -165,6 +197,7 @@ public class account extends bank implements vip , red_zone{
     }
     
      // tao tin nhắn thêm vào lịch sử giao dịch khi nap tien NHAN tien
+    @Override
     public String[] create_history(int so_tien,String type){
          // loai + time + stk nguoi gui+ ten ngan hang gui + so tien
         String type1 = "nap";

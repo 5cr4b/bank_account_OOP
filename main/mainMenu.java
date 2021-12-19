@@ -8,19 +8,22 @@ import user_func_frame.show_children;
 import user_func_frame.show_rut_tien;
 import user_func_frame.show_thong_tin;
 import user_func_frame.show_vac_xin;
-import src.bank;
+import src.team_it;
+import src.team_non_it;
 
 public class mainMenu extends javax.swing.JFrame {
     public account acc;
-    public bank bank;
     public account tuan123;
     public account linda1;
     public account peter010;
+    team_it teamIT;
+    team_non_it teamNonIt;
 
-    public mainMenu(account acc,bank bank_system,account tuan123,account linda1 ,account peter010) {
+    public mainMenu(account acc,team_it teamIT,team_non_it teamNonIt,account tuan123,account linda1 ,account peter010) {
         initComponents();
         this.acc = acc;
-        this.bank = bank_system;
+        this.teamIT = teamIT;
+        this.teamNonIt = teamNonIt; 
         this.tuan123 = tuan123;
         this.linda1 = linda1;
         this.peter010 = peter010;
@@ -120,7 +123,7 @@ public class mainMenu extends javax.swing.JFrame {
             }
         });
 
-        welcome.setText("                                 ");
+        welcome.setText("                                                       ");
         welcome.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 welcomeAncestorAdded(evt);
@@ -167,7 +170,7 @@ public class mainMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(188, 188, 188))
+                .addGap(130, 130, 130))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,9 +180,9 @@ public class mainMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_vac_xin, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_children, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addComponent(welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +244,7 @@ public class mainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_nap_tienActionPerformed
 
     private void btn_chuyen_tienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_chuyen_tienActionPerformed
-        show_chuyen_tien chuyen = new show_chuyen_tien(this.acc,this.bank,this.tuan123, this.linda1,this.peter010);
+        show_chuyen_tien chuyen = new show_chuyen_tien(this.acc,this.tuan123, this.linda1,this.peter010);
         chuyen.setVisible(true);
     }//GEN-LAST:event_btn_chuyen_tienActionPerformed
 
@@ -251,7 +254,7 @@ public class mainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_lich_suActionPerformed
 
     private void btn_chuyen_tkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_chuyen_tkActionPerformed
-        sign_in_up sign_in1 = new sign_in_up(this.bank,this.linda1, this.peter010,this.tuan123);
+        sign_in_up sign_in1 = new sign_in_up(teamIT,teamNonIt,this.linda1, this.peter010,this.tuan123);
         sign_in1.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_chuyen_tkActionPerformed

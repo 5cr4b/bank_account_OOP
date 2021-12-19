@@ -5,18 +5,13 @@ import java.time.LocalDateTime;
 
 
 public class bank{
-
     public ArrayList<String> list_id_registed = new ArrayList<String>();
     public ArrayList<String[]> list_history = new ArrayList<String[]>();
     public ArrayList<String[]> list_message = new ArrayList<String[]>();
     
-    
-
     public bank(){
 
     } 
-
-
     // ----------------end getter, setter ----------------------
     
     public ArrayList get_list_history(){
@@ -30,41 +25,7 @@ public class bank{
     }
     public void set_list_message(String[] content){
         this.list_message.add(content);
-    }
-    // ----------------------sign up-----------
-    
-    public boolean sign_up(account acc ,String bank_id,String bank_password , String user_name, int user_money ){
-        // xem có trùng tài khoản k & mật khẩu k trùng
-        if(check_sign_up(bank_id) && bank_password != null){       
-            acc.set_bankPassword(bank_password);
-            acc.set_bank_id(bank_id);
-            acc.set_user_money(user_money);
-            acc.set_username(user_name);
-            this.list_id_registed.add(bank_id); // thêm vào danh sách đã đăng kí
-            return true;
-        }
-        return false;
-
-    }
-    
-    // kiểm tra trùng id 
-    protected boolean check_sign_up(String bank_id){
-        for(String i : this.list_id_registed) {
-            if(i.equals(bank_id)){
-                return false;
-            }
-        }
-        return true;
-    }    
-        
-    // đăng nhập 
-    public boolean sign_in(account account, String bank_id ,String  password){
-        if(account.get_bank_id().equals(bank_id) && account.get_bankPassword().equals(password)){
-            return true;
-        }
-        return false;
-    }
-    
+    }   
     
     // tạo tin nhắn  và trả về  tin nhắn
     // create array message with time & content
@@ -102,14 +63,14 @@ public class bank{
     public String[] noti_bank(int so_tien,String type){
         switch (type){
             case "nap":        
-                String content ="Ban da " + type +" "+ so_tien + " USD vao tai khoan";
+                String content ="Ban da " + type +" " + so_tien + " USD vao tai khoan";
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
                 LocalDateTime now = LocalDateTime.now();  
                 String[] myarr = {(String) dtf.format(now),content};
                 return myarr;
          
             case "rut":
-                String content2 ="Ban da " + type + " "+ so_tien +" USD";
+                String content2 ="Ban da " + type + " " + so_tien +" USD";
                 DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
                 LocalDateTime now1 = LocalDateTime.now();  
                 String[] myarr1 = {(String) dtf1.format(now1),content2};

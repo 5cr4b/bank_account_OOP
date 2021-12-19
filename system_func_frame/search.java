@@ -1,32 +1,26 @@
 package system_func_frame;
-
+import noti_frame.fail;
 import noti_frame.success;
 import src.account;
-import src.admin;
+import src.team_non_it;
 
-/**
- *
- * @author cr4b
- */
 public class search extends javax.swing.JFrame {
     account tuan123;
     account linda1;
     account peter010;
-    admin admin;
-    /**
-     * Creates new form search
-     */
+    team_non_it teamNonIt;
+
     public search() {
         initComponents();
     }
     
     // sao ke Tk
-    public search(admin admin,account tuan123,account linda1,account peter010) {
+    public search(team_non_it teamNonIt,account tuan123,account linda1,account peter010) {
         initComponents();
+        this.teamNonIt = teamNonIt;
         this.tuan123 = tuan123;
         this.linda1 = linda1;
         this.peter010 = peter010;
-        this.admin = admin;
     }
     
  
@@ -112,21 +106,22 @@ public class search extends javax.swing.JFrame {
            break;
            case "saoKe_tuan123":
              success suc2 = new success();
-             this.admin.sao_ke(this.tuan123);
+             this.teamNonIt.sao_ke(this.tuan123);
              suc2.setVisible(true);
            break;
            case "saoKe_linda1":
              success suc = new success();
-             this.admin.sao_ke(this.linda1);
+             this.teamNonIt.sao_ke(this.linda1);
              suc.setVisible(true);
            break;
            case "saoKe_peter010":
              success suc1 = new success();
-             this.admin.sao_ke(this.peter010);
+             this.teamNonIt.sao_ke(this.peter010);
              suc1.setVisible(true);  
            break;
            default:
-               ;
+            fail fail = new fail();
+            fail.setVisible(true);
        }
     }//GEN-LAST:event_jButton1ActionPerformed
 

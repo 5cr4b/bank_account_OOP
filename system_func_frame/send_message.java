@@ -2,24 +2,24 @@ package system_func_frame;
 import noti_frame.success;
 import noti_frame.fail;
 import src.account;
-import src.admin;
+import src.team_non_it;
 public class send_message extends javax.swing.JFrame {
-    protected admin admin;
+    protected team_non_it teamNonIt;
     protected account tuan123;
     protected account linda1;
     protected account peter010;
     
-    public send_message() {
+   
+    public send_message(team_non_it teamNonIt,account tuan123 , account linda1 , account peter010) {
         initComponents();
-    }
-    public send_message(admin admin , account tuan123 , account linda1 , account peter010) {
-        initComponents();
-        this.admin = admin;
+        this.teamNonIt = teamNonIt;
         this.tuan123 = tuan123;
         this.linda1 = linda1;
         this.peter010 = peter010;
     }
- 
+     public send_message() {
+        initComponents();
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -108,25 +108,25 @@ public class send_message extends javax.swing.JFrame {
             String id = id_input.getText();
             String content = content_input.getText();
             switch (id){
-                case "tuan123":
-                    this.admin.send_message(tuan123, content);
-                    success success = new success();
-                    success.setVisible(true);
-                break;
-                case "linda1":
-                    this.admin.send_message(linda1, content);
-                    success success1 = new success();
-                    success1.setVisible(true);
-                break;
-                case "peter010":
-                    this.admin.send_message(peter010, content);
-                    success success2 = new success();
-                    success2.setVisible(true);
-                break;
-                default:
-                    fail fail = new fail();
-                    fail.setVisible(true);
-            }       
+            case "tuan123":
+                this.teamNonIt.send_message(tuan123, content);
+                success success = new success();
+                success.setVisible(true);
+            break;
+            case "linda1":
+                this.teamNonIt.send_message(linda1, content);
+                success success1 = new success();
+                success1.setVisible(true);
+            break;
+            case "peter010":
+                this.teamNonIt.send_message(peter010, content);
+                success success2 = new success();
+                success2.setVisible(true);
+            break;  
+            default:
+            fail fail = new fail();
+            fail.setVisible(true);
+        }                        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
